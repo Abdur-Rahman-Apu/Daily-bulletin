@@ -37,22 +37,29 @@ const displayNews = (data, category_id, categories) => {
 
 
 
-    document.getElementById('option-select').addEventListener('change', function (event) {
+    if (data.length > 0) {
+        document.getElementById('option-select').removeAttribute('disabled');
+        document.getElementById('option-select').addEventListener('click', function (event) {
 
 
-        if (event.target.value === "1") {
+            if (event.target.value === "1") {
 
 
 
-            data.sort(function (a, b) {
-                a = a.total_view;
-                b = b.total_view;
-                return b - a;
-            });
+                data.sort(function (a, b) {
+                    a = a.total_view;
+                    b = b.total_view;
+                    return b - a;
+                });
 
-            displayNews(data, category_id, categories);
-        }
-    });
+                displayNews(data, category_id, categories);
+            }
+        });
+    } else {
+        document.getElementById('option-select').setAttribute('disabled', 'true');
+    }
+
+
 
 
 
