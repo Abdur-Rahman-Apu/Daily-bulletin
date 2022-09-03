@@ -5,7 +5,8 @@ const categoriesDisplay = () => {
 
     fetch("https://openapi.programming-hero.com/api/news/categories")
         .then(res => res.json())
-        .then(data => displayCategory(data.data.news_category));
+        .then(data => displayCategory(data.data.news_category))
+        .catch(error => console.log(error))
 }
 
 

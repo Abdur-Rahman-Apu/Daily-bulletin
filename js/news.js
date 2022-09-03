@@ -51,11 +51,7 @@ const displayNews = (data, category_id, categories) => {
             });
 
             displayNews(data, category_id, categories);
-        } else {
-            console.log(category_id)
-            displayNews(data, category_id, categories);
         }
-
     });
 
 
@@ -103,7 +99,7 @@ const displayNews = (data, category_id, categories) => {
                         <div class="card-body">
                             <h5 class="card-title">${title ? title : 'No title'}</h5>
                             <p class="card-text">${details.length > 20 ? details.split(' ').slice(0, 70).join(' ') + '...' : details}</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <div class="d-flex align-items-center" >
                                         <img src="${img ? img : "No image"}" class="img-fluid rounded-circle" alt="author image" height="40" width="40">
@@ -113,19 +109,19 @@ const displayNews = (data, category_id, categories) => {
                                         <p class="publish-date m-0">${published_date ? published_date : 'No date'}</p>
                                     </div>
                                 </div>
-                                <div class="d-flex">
+                                <div class="d-flex d-none d-md-block d-md-flex">
                                     <div class="me-2"><i class="fa-regular fa-eye"></i></div>
                                     <p class="view-amount m-0">${total_view ? total_view : 'No view'}</p>
                                 </div>
     
-                                <div>
+                                <div class="d-none d-md-block">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star-half-stroke"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                 </div>
-                                <button onclick="modalOpen('${_id}');" id="details-show" class="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> Details</button >
+                                <button onclick="modalOpen('${_id}');" id="details-show" class="details-btn mt-4 mt-md-0" data-bs-toggle="modal" data-bs-target="#exampleModal"> Details</button >
                             </div >
                         </div >
                     </div >
