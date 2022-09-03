@@ -1,11 +1,16 @@
 // event handler on categories 
 document.getElementById('categories').addEventListener('click', function (event) {
 
+    // const defaultField = document.getElementById('default');
+    // defaultField.setAttribute('selected', 'selected');
+    // const viewsField = document.getElementById('views');
+    // viewsField.removeAttribute('selected');
     const category = () => {
 
         fetch("https://openapi.programming-hero.com/api/news/categories")
             .then(res => res.json())
             .then(data => getCategoryId(data.data.news_category))
+            .catch(error => console.log(error))
     }
 
 
@@ -29,6 +34,33 @@ document.getElementById('categories').addEventListener('click', function (event)
 //display news 
 
 const displayNews = (data, category_id, categories) => {
+
+
+
+    document.getElementById('option-select').addEventListener('change', function (event) {
+
+
+        if (event.target.value === "1") {
+
+
+
+            data.sort(function (a, b) {
+                a = a.total_view;
+                b = b.total_view;
+                return b - a;
+            });
+
+            displayNews(data, category_id, categories);
+        } else {
+            console.log(category_id)
+            displayNews(data, category_id, categories);
+        }
+
+    });
+
+
+
+
 
 
 
@@ -70,7 +102,7 @@ const displayNews = (data, category_id, categories) => {
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${title ? title : 'No title'}</h5>
-                            <p class="card-text">${details.length > 20 ? details.split(' ').slice(0, 70).join(' ') : details}</p>
+                            <p class="card-text">${details.length > 20 ? details.split(' ').slice(0, 70).join(' ') + '...' : details}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <div class="d-flex align-items-center" >

@@ -1,4 +1,6 @@
 const getNews = (category_id, categories) => {
+
+
     // start spinner 
     toggleSpinnerNews(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
@@ -9,10 +11,12 @@ const getNews = (category_id, categories) => {
 
 
 // initially show news 
-fetch("https://openapi.programming-hero.com/api/news/categories").then(res => res.json()).then(data => getNews('08', data.data.news_category));
+const firstShow = () => {
+    fetch("https://openapi.programming-hero.com/api/news/categories").then(res => res.json()).then(data => getNews('08', data.data.news_category));
+}
 
 
-
+firstShow();
 
 const getCategoryName = (id, categories) => {
     const result = categories.find(item => item.category_id === id);
