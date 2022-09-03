@@ -53,7 +53,7 @@ const displayNews = (data, category_id, categories) => {
 
 
             // destructuring obj 
-            const { title, thumbnail_url, details, total_view, rating, author } = value;
+            const { title, thumbnail_url, details, total_view, rating, author, _id } = value;
 
             const { name, published_date, img } = author;
 
@@ -92,19 +92,131 @@ const displayNews = (data, category_id, categories) => {
                                     <i class="fa-solid fa-star-half-stroke"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                 </div>
-                                <button class="details-btn">Details</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
+                                <button onclick="modalOpen('${_id}');" id="details-show" class="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> Details</button >
+                            </div >
+                        </div >
+                    </div >
+                </div >
+    `;
             child.className += " mb-3 p-3";
+
+            // child.setAttribute("data-bs-toggle", "modal")
+            // child.setAttribute("data-bs-target", "#btnModal")
+            // child.setAttribute("id", "modalBtn")
             parent.appendChild(child);
 
         }
     } else {
-        document.getElementById('news-num').innerText = `No items found in category ${category_name}`;
+        document.getElementById('news-num').innerText = `No items found in category ${category_name} `;
     }
 
 
 }
+
+
+// modal
+
+// function modalOpen(thumbnailUrl, authorName, publishedDate, totalView, title, details) {
+
+//     console.log("Clicked");
+// }
+function modalOpen(newsId) {
+    console.log('clicked');
+    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
+        .then(res => res.json())
+        .then(data => displayInModal(data.data))
+
+
+    const displayInModal = data => {
+        // console.log(data)
+        const { title, author, thumbnail_url, rating, total_view, details } = data[0];
+
+        const { name, img, published_date } = author;
+        const { number } = rating;
+
+        // author img 
+
+        const imgField = document.getElementById('img-set');
+        imgField.innerHTML = ``;
+        const authorImg = document.createElement('img');
+        authorImg.setAttribute('src', img);
+        authorImg.setAttribute('height', '50');
+        authorImg.setAttribute('width', '50');
+        authorImg.classList.add('rounded-circle');
+
+
+        imgField.appendChild(authorImg);
+
+        // author info 
+        const authorField = document.getElementById('author-info');
+        authorField.innerHTML = ``;
+        const authorName = document.createElement('p');
+        authorName.innerText = `${name ? name : 'No name'}`;
+        authorName.className += " m-0 fw-bold";
+
+        const publishDate = document.createElement('p');
+        publishDate.innerText = `${published_date ? published_date : 'No published date'}`;
+        publishDate.className += " m-0 text-secondary";
+
+        authorField.appendChild(authorName);
+        authorField.appendChild(publishDate);
+
+        // header right 
+
+        const modalHeaderRight = document.getElementById('header-right');
+        // modalHeaderRight.innerHTML = ``;
+        modalHeaderRight.innerHTML = `
+        <div class="d-flex">
+            <div class="me-2"><i class="fa-regular fa-eye"></i></div>
+            <p class="view-amount m-0">${total_view ? total_view : 'No view'}</p>
+        </div>
+
+        <div>
+            <i class="fa-sharp fa-solid fa-star"></i>
+            <i class="fa-sharp fa-solid fa-star"></i>
+            <i class="fa-sharp fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-sharp fa-solid fa-star"></i>
+        </div>
+        `;
+
+        // title 
+
+        const titleField = document.getElementById('exampleModalLabel');
+        titleField.innerText = ``;
+        titleField.innerText = `${title}`;
+
+
+        // thumbnail 
+
+        const thumbnailField = document.getElementById('modal-thumbnail');
+        thumbnailField.innerHTML = ``;
+        const thumbnail = document.createElement('img');
+        thumbnail.setAttribute('src', `${thumbnail_url}`);
+
+        thumbnailField.appendChild(thumbnail);
+
+        // detail news 
+        const detailField = document.getElementById('modal-details');
+        detailField.innerHTML = ``;
+
+        const detailTitle = document.createElement('h4');
+        detailTitle.innerText = `Details:`;
+        detailField.appendChild(detailTitle);
+
+
+        const detailNews = document.createElement('p');
+        detailNews.className += " m-0";
+
+
+        detailNews.innerText = `${details}`;
+        detailField.appendChild(detailNews);
+
+
+
+    }
+}
+
+
+
+

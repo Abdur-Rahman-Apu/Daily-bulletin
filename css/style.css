@@ -147,6 +147,15 @@ body {
     padding-left: 20px;
 }
 
+#header-right {
+    font-size: 0.8em;
+}
+
+.modal-title {
+    font-size: 1.3em;
+    text-align: center;
+}
+
 /* footer part  */
 
 footer {

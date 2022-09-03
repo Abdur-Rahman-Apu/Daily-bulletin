@@ -63,7 +63,7 @@
 
         <section class="container mt-5">
             <div class="available-news-number d-flex align-items-center">
-                <p id="news-num" class="m-0">Found</p>
+                <p id="news-num" class="m-0"></p>
             </div>
         </section>
     </header>
@@ -100,22 +100,32 @@
         </section>
 
 
-        <!-- modal section  -->
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#btnModal">
-            Launch demo modal
-        </button>
+
+
 
         <!-- Modal -->
-        <div class="modal fade" id="btnModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+
+                    <!-- modal header  -->
+                    <div class="modal-header d-flex justify-content-between">
+
+                        <div class="d-flex align-items-center">
+                            <div id="img-set" class="me-2"></div>
+                            <div id="author-info"></div>
+                        </div>
+
+                        <!-- header right  -->
+                        <div id="header-right" class="ms-5"></div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
+                    <!-- modal body  -->
                     <div class="modal-body">
-                        ...
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <div id="modal-thumbnail" class="text-center my-5"></div>
+                        <div id="modal-details"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -124,12 +134,16 @@
                 </div>
             </div>
         </div>
+
+
+
+
     </main>
     <!-- main section end -->
 
     <!-- footer start  -->
     <footer class="d-flex justify-content-center align-items-center mt-5">
-        <p class="m-0">Copyright 2021 Daily Routine</p>
+        <p class="m-0">Copyright 2021 Daily Bulletin</p>
     </footer>
     <!-- footer end  -->
 
