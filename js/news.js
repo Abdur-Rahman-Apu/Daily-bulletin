@@ -2,6 +2,7 @@
 document.getElementById('categories').addEventListener('click', function (event) {
 
     const category = () => {
+
         fetch("https://openapi.programming-hero.com/api/news/categories")
             .then(res => res.json())
             .then(data => getCategoryId(data.data.news_category))
@@ -109,6 +110,10 @@ const displayNews = (data, category_id, categories) => {
     } else {
         document.getElementById('news-num').innerText = `No items found in category ${category_name} `;
     }
+
+    // stop spinner 
+
+    toggleSpinnerNews(false);
 
 
 }

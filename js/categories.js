@@ -1,4 +1,8 @@
 const categoriesDisplay = () => {
+
+    // start spinner for category 
+    toggleSpinnerCategory(true);
+
     fetch("https://openapi.programming-hero.com/api/news/categories")
         .then(res => res.json())
         .then(data => displayCategory(data.data.news_category));
@@ -18,6 +22,9 @@ const displayCategory = categories => {
         child.innerText = category.category_name;
         parent.appendChild(child);
     });
+
+    // stop spinner for category 
+    toggleSpinnerCategory(false);
 
     const entertainment = parent.getElementsByClassName('All News');
     entertainment[0].classList.add('active');

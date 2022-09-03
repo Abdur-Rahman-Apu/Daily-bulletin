@@ -56,9 +56,16 @@
         <hr class="container mt-3">
 
         <section class="container">
-            <div id="categories" class="d-flex justify-content-between">
 
+            <!-- spinner for category  -->
+            <div class="text-center">
+                <div id="category" class="spinner-grow text-primary d-none" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
+
+            <!-- categories holder  -->
+            <div id="categories" class="d-flex justify-content-between"></div>
         </section>
 
         <section class="container mt-5">
@@ -90,7 +97,12 @@
         </section>
 
 
-
+        <section id="loader" class="text-center mt-5 d-none">
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+            </button>
+        </section>
 
         <!-- news section  -->
         <section class="news-section mt-5">
