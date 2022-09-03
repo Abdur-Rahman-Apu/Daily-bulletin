@@ -13,6 +13,9 @@
 
     <!-- custom css link  -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- blog css link  -->
+    <link rel="stylesheet" href="./css/blog.css">
 </head>
 
 <body>
@@ -48,6 +51,158 @@
 
 
     </header>
+
+    <!-- main part start  -->
+
+    <main>
+        <section class="title text-center my-5">
+            <h3>Learn Something & Grow your knowledge</h3>
+        </section>
+
+
+        <!-- accordion  -->
+        <div class="accordion my-5" id="accordionExample">
+            <!-- item one  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span class="text-primary me-3 fw-bold">Question 1:</span> Write down about the differences
+                        between var,
+                        let
+                        and const variables.
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div>
+                            <p class="fw-bold text-primary">Var</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>By declaring a object using var keyword, we can reassign and redeclared that variable.
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="fw-bold text-primary">Let</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>By declaring a object using let keyword, we can reassign the value but we can not
+                                redeclared that variable again.</p>
+                        </div>
+
+                        <div>
+                            <p class="fw-bold text-primary">Const</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>By declaring a object using const keyword, we can not reassign and redeclared that
+                                variable.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- item 2  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span class="text-primary me-3 fw-bold">Question 2:</span> Write down about the differences
+                        between arrow function and regular function.
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <!-- normal function  -->
+                        <div>
+                            <p class="fw-bold text-primary">Normal function</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>Regular functions created using function declarations or expressions are constructible
+                                and callable. Since regular functions are constructible, they can be called using the
+                                new keyword.
+                            </p>
+                        </div>
+
+                        <!-- arrow function  -->
+                        <div>
+                            <p class="fw-bold text-primary">Arrow function</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>The arrow functions are only callable and not constructible, i.e arrow functions can
+                                never be used as constructor functions. Hence, they can never be invoked with the new
+                                keyword.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- item 3  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span class="text-primary me-3 fw-bold">Question 3:</span> Write down about the differences
+                        between Map, forEach, filter and find methods.
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div>
+                            <p class="fw-bold text-primary">Map method</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>Map like filter & foreach takes a callback and run it against every element on the array
+                                but whats makes it unique is it generate a new array based on your existing array.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-primary">forEach</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>Foreach takes a callback function and run that callback function on each element of array
+                                one by one.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-primary">filter method</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>Filter executes the callback and check its return value. If the value is true element
+                                remains in the resulting array but if the return value is false the element will be
+                                removed for the resulting array.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="fw-bold text-primary">find method</p>
+                            <!-- <strong>Scope of the var:</strong> -->
+                            <p>When you want to select a single element from an array, then you can use find method. It
+                                will return you the first matching result.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span class="text-primary me-3 fw-bold">Question 4:</span> What is the purpose of using template
+                        literals in javascript language?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p class="fw-bold text-primary">Template literals:</p>
+                        <p>Template literals are literals delimited with backtick (`) characters, allowing for
+                            multi-line strings, for string interpolation with embedded expressions, and for special
+                            constructs called tagged templates.
+                            Template string is used for accessing variable dynamically. We can display output in
+                            multiple lines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main part end  -->
 
 
     <!-- bootstrap js link  -->

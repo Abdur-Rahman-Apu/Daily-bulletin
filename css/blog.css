@@ -1,0 +1,9 @@
+.title {
+    font-family: var(--playfair-font);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.accordion {
+    font-family: var(--roboto-font);
+}
