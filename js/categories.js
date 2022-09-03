@@ -19,7 +19,7 @@ const displayCategory = categories => {
         parent.appendChild(child);
     });
 
-    const entertainment = parent.getElementsByClassName('Entertainment');
+    const entertainment = parent.getElementsByClassName('All News');
     entertainment[0].classList.add('active');
 
 

@@ -113,6 +113,21 @@ body {
 }
 
 
+/* card  */
+
+.author-name {
+    font-family: var(--roboto-font);
+    font-weight: 400;
+}
+
+.publish-date {
+    font-family: var(--poppins-font);
+    font-weight: 400;
+    font-size: 0.88em;
+    color: #718797;
+}
+
+
 /* footer part  */
 
 footer {
