@@ -14,7 +14,7 @@ const displayCategory = categories => {
         const child = document.createElement('a');
         child.classList.add('category');
         const categoryName = category.category_name;
-        child.className += " " + categoryName;
+        child.className += " " + categoryName + " " + category.category_id;
         child.innerText = category.category_name;
         parent.appendChild(child);
     });
