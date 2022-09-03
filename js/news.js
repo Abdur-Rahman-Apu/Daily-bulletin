@@ -24,10 +24,15 @@ const displayNews = data => {
 
 
     const parent = document.getElementById('news-container');
+    // const newsNumberShowField=document.getElementById('news-number');
+
     parent.innerHTML = ``;
 
     for (const value of data) {
 
+        if (value > 0) {
+            document.getElementById('news-num').innerText = value + " "
+        }
         // destructuring obj 
         const { title, thumbnail_url, details, total_view, rating, author } = value;
 
@@ -46,7 +51,7 @@ const displayNews = data => {
                     <div class="card-body">
                         <h5 class="card-title">${title}</h5>
                         <p class="card-text">${details.length > 20 ? details.split(' ').slice(0, 70).join(' ') : details}</p>
-                        <div>
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex">
                                 <div class="d-flex align-items-center" >
                                     <img src="${img}" class="img-fluid rounded-circle" alt="author image" height="40" width="40">
@@ -56,8 +61,19 @@ const displayNews = data => {
                                     <p class="publish-date m-0">${published_date}</p>
                                 </div>
                             </div>
-                            <div></div>
-                            <button></button>
+                            <div class="d-flex">
+                                <div class="me-2"><i class="fa-regular fa-eye"></i></div>
+                                <p class="view-amount m-0">${total_view}</p>
+                            </div>
+
+                            <div>
+                                <i class="fa-sharp fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-solid fa-star"></i>
+                                <i class="fa-sharp fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-sharp fa-solid fa-star"></i>
+                            </div>
+                            <button class="details-btn">Details</button>
                         </div>
                     </div>
                 </div>

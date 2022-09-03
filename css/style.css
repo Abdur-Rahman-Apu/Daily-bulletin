@@ -127,6 +127,18 @@ body {
     color: #718797;
 }
 
+.view-amount {
+    font-family: var(--roboto-font);
+    font-weight: 700;
+}
+
+.details-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+}
 
 /* footer part  */
 

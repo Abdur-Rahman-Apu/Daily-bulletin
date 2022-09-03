@@ -6,3 +6,17 @@ const getNews = (category_id) => {
 }
 
 getNews("08");
+
+
+
+const getCategoryName = (category_id) => {
+    fetch("https://openapi.programming-hero.com/api/news/categories")
+        .then(res => res.json())
+        .then(data => foundCategoryName(data.data.news_category));
+}
+
+
+
+const setNumberOfNews = () => {
+
+}
