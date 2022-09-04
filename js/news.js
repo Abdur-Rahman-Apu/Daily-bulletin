@@ -1,10 +1,7 @@
 // event handler on categories 
 document.getElementById('categories').addEventListener('click', function (event) {
 
-    // const defaultField = document.getElementById('default');
-    // defaultField.setAttribute('selected', 'selected');
-    // const viewsField = document.getElementById('views');
-    // viewsField.removeAttribute('selected');
+
     const category = () => {
 
         fetch("https://openapi.programming-hero.com/api/news/categories")
@@ -39,32 +36,17 @@ const displayNews = (data, category_id, categories) => {
 
     if (data.length > 0) {
         document.getElementById('option-select').removeAttribute('disabled');
-        document.getElementById('option-select').addEventListener('click', function (event) {
 
-
-            if (event.target.value === "1") {
-
-
-
-                data.sort(function (a, b) {
-                    a = a.total_view;
-                    b = b.total_view;
-                    return b - a;
-                });
-
-                displayNews(data, category_id, categories);
-            }
-        });
     } else {
         document.getElementById('option-select').setAttribute('disabled', 'true');
     }
 
-
-
-
-
-
-
+    // sort data by default 
+    data.sort(function (a, b) {
+        a = a.total_view;
+        b = b.total_view;
+        return b - a;
+    });
 
 
     const parent = document.getElementById('news-container');
@@ -74,14 +56,11 @@ const displayNews = (data, category_id, categories) => {
     const category_name = getCategoryName(category_id, categories);
 
 
-    // const newsNumberShowField=document.getElementById('news-number');
-
     parent.innerHTML = ``;
 
 
-
     if (numOfNews > 0) {
-        for (const value of data) {
+        data.forEach(value => {
 
 
             setNumberOfNews('news-num', numOfNews, category_name);
@@ -121,7 +100,7 @@ const displayNews = (data, category_id, categories) => {
                                     <p class="view-amount m-0">${total_view ? total_view : 'No view'}</p>
                                 </div>
     
-                                <div class="d-none d-md-block">
+                                <div class="d-none d-lg-block">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
@@ -136,18 +115,16 @@ const displayNews = (data, category_id, categories) => {
     `;
             child.className += " mb-3 p-3";
 
-            // child.setAttribute("data-bs-toggle", "modal")
-            // child.setAttribute("data-bs-target", "#btnModal")
-            // child.setAttribute("id", "modalBtn")
             parent.appendChild(child);
 
-        }
+        });
     } else {
+
         document.getElementById('news-num').innerText = `No items found in category ${category_name} `;
+
     }
 
     // stop spinner 
-
     toggleSpinnerNews(false);
 
 
@@ -156,19 +133,16 @@ const displayNews = (data, category_id, categories) => {
 
 // modal
 
-// function modalOpen(thumbnailUrl, authorName, publishedDate, totalView, title, details) {
 
-//     console.log("Clicked");
-// }
 function modalOpen(newsId) {
-    console.log('clicked');
+
     fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
         .then(res => res.json())
         .then(data => displayInModal(data.data))
 
 
     const displayInModal = data => {
-        // console.log(data)
+
         const { title, author, thumbnail_url, rating, total_view, details } = data[0];
 
         const { name, img, published_date } = author;
@@ -204,7 +178,7 @@ function modalOpen(newsId) {
         // header right 
 
         const modalHeaderRight = document.getElementById('header-right');
-        // modalHeaderRight.innerHTML = ``;
+
         modalHeaderRight.innerHTML = `
         <div class="d-flex">
             <div class="me-2"><i class="fa-regular fa-eye"></i></div>
@@ -249,7 +223,7 @@ function modalOpen(newsId) {
         detailNews.className += " m-0";
 
 
-        detailNews.innerText = `${details}`;
+        detailNews.innerText = `${details ? details : 'No details'}`;
         detailField.appendChild(detailNews);
 
 
